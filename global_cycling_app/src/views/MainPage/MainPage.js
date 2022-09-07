@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 const Button = styled.button`
 padding:0.35em 1.2em;
-border:0.1em solid #4d535e;
+border:0.1em solid #dfdce3;
 margin:0 0.3em 0.3em 0;
 border-radius:0.12em;
 box-sizing: border-box;
@@ -15,7 +15,7 @@ font-family:Roboto sans-serif;
 font-weight:300;
 color:#FFFFFF;
 transition: all 0.2s;
-background-color:#4d535e;
+background-color:#dfdce3;
 }
 &:hover{
 color:#000000;
@@ -36,7 +36,9 @@ const ImgStyled =styled.img`
 width:2%; 
 `;
 
-
+const StyledDiv= styled.div`
+margin:2%;
+`;
 const MainPage =({setVideoId})=>{
    const{data, isLoading, isError} = useQuery('videos', api.getVideos);
     if(isLoading){
@@ -50,12 +52,12 @@ const MainPage =({setVideoId})=>{
 
 
     return(
-        <div>
+        <StyledDiv>
             <ul style={{textAlign:'left', listStyleType:'none', marginLeft:'0px'}}>{data?.map((item) =>
             <li key={item.id} > 
             <ImgStyled alt='view' src='https://www.svgrepo.com/show/171895/eye.svg' />
             <Button className='button'  onClick={()=> setVideoId(item.id)}>{item.title}</Button> </li>)}</ul>
-        </div>
+        </StyledDiv>
     
     )
 }
